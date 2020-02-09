@@ -1,0 +1,17 @@
+    img {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    article {
+        border: 1px solid;
+        padding: 10px;
+    }
+
+    .data-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        margin: 0px auto;
+        grid-gap: 10px;
+
+    }
