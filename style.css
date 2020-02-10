@@ -15,3 +15,17 @@
         grid-gap: 10px;
 
     }
+
+    nav {
+        text-align: center;
+        margin-bottom: 15px;
+
+    }
+
+    .button {
+        padding: 5px 10px;
+        border: 1px solid black;
+        border-radius: 5px;
+        display: inline-block;
+
+    }
