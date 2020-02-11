@@ -2,6 +2,7 @@
 
       let menuData = [];
       let filter = "all";
+      const detalje = document.querySelector("#popUp");
 
       document.addEventListener("DOMContentLoaded", start);
 
@@ -17,15 +18,6 @@
           renderMenuItems();
       };
 
-      function setButtonEvent() {
-          let buttons = document.querySelectorAll(".button").forEach(elm => {
-              elm.addEventListener("click", event => {
-                  filter = event.target.dataset.filter; //sætter filter-variablet til filter-atributten på knappen (derfor SKAL data-filter have samme navn som kategorierne i datasættet)
-                  renderMenuItems();
-              });
-
-          })
-      }
 
       function renderMenuItems() {
 
@@ -49,10 +41,46 @@
           filteredMenu.forEach(food => {
               let klon = oversigtTemplate.cloneNode(true).content; //kloner dom-element.
               klon.querySelector("h3").textContent = food.gsx$navn.$t;
-              klon.querySelector(".desciption").textContent = food.gsx$kort.$t;
+              klon.querySelector(".description").textContent = food.gsx$kort.$t;
               klon.querySelector(".price").textContent = `Pris: ${food.gsx$pris.$t}`;
-              klon.querySelector("img").src = `/imgs/small/${food.gsx$billede.$t}-sm.jpg`;
+              klon.querySelector("img").src = `imgs/small/${food.gsx$billede.$t}-sm.jpg`;
+              klon.querySelector("article").addEventListener("click", () => {
+                  showDetails(food);
+              });
               container.appendChild(klon); //klonede domelement sættes ind i HTML-dom.
           })
+
+      }
+
+      function showDetails(food) {
+          console.log(`showDetails`);
+
+          detalje.classList.remove("hide");
+          detalje.querySelector("div").addEventListener("click", () => detalje.classList.add("hide"));
+
+          detalje.querySelector("h3").textContent = food.gsx$navn.$t;
+          detalje.querySelector(".description").textContent = food.gsx$lang.$t;
+          detalje.querySelector(".price").textContent = `Pris: ${food.gsx$pris.$t}`;
+          detalje.querySelector("img").src = `imgs/large/${food.gsx$billede.$t}.jpg`;
+      }
+
+
+      function setButtonEvent() {
+          let buttons = document.querySelectorAll(".button").forEach(elm => {
+              elm.addEventListener("click", filtering);
+
+          })
+      }
+
+      function filtering() {
+          document.querySelectorAll(".button").forEach(elm => {
+              elm.classList.remove("button_active");
+          })
+          filter = this.dataset.filter; //sætter filter-variablet til filter-atributten på knappen (derfor SKAL data-filter have samme navn som kategorierne i datasættet)
+          renderMenuItems();
+
+          this.classList.add("button_active");
+
+          document.querySelector("h2").textContent = this.textContent;
 
       }

@@ -6,44 +6,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <nav class="navigation">
-        <div data-filter="all" class="button">
-            Alle
-        </div>
-        <div data-filter="forretter" class="button">
-            Forretter
-        </div>
-        <div data-filter="hovedretter" class="button">
-            Hovedret
-        </div>
-        <div data-filter="desserter" class="button">
-            Dessert
-        </div>
-        <div data-filter="drikkevarer" class="button">
-            Drikkevare
-        </div>
+    <div class="banner-con">
+        <div class="banner-img">
+            <div class="banner-text">
 
+                <h1>Bistro Babushka</h1>
+
+                <p>Mad til glade mennesker </p>
+
+
+            </div>
+        </div>
+    </div>
+
+    <nav class="navigation">
+        <button data-filter="all" class="button button_active">
+            Alle
+        </button>
+        <button data-filter="forretter" class="button">
+            Forretter
+        </button>
+        <button data-filter="hovedretter" class="button">
+            Hovedret
+        </button>
+        <button data-filter="desserter" class="button">
+            Dessert
+        </button>
+        <button data-filter="drikkevarer" class="button">
+            Drikkevarer
+        </button>
 
     </nav>
+
+    <h2>Alle</h2>
+
     <section class="data-container"></section>
     <template>
         <article class="oversigt">
             <h3></h3>
             <img src="" alt="">
             <p class="id"> </p>
-            <p class="desciption"> </p>
+            <p class="description"> </p>
             <p class="price"> </p>
-
         </article>
 
     </template>
+
+    <section id="popUp" class="hide">
+        <article class="retterPopUp">
+            <div>X</div>
+            <h3></h3>
+            <img src="" alt="">
+            <p class="id"> </p>
+            <p class="description"> </p>
+            <p class="price"> </p>
+        </article>
+    </section>
 
     <main></main>
 
 
     <script src="script.js"></script>
-</body></html>
+</body>
+
+</html>
